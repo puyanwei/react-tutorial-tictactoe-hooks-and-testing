@@ -1,0 +1,12 @@
+/*
+import { render } from "@testing-library/react";
+import React from "react";
+import Square from "../components/Square";
+
+Tests for BOARD
+1. Test stuff renders
+2. Test that renderSquare renders a square and when clicked will give an X or O.
+3. Test that calculateWinner works. Wtf is it returning when true?
+4. Test that the status is toggling
+5. Test that once won, nothing is clickable
+*/

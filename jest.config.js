@@ -1,3 +1,3 @@
 module.exports = {
-    setupFilesAfterEnv: ["@testing-library/react/cleanup-after-each"]
+    setupFilesAfterEnv: ["<rootDir>/src/setupTest.js"]
 };
