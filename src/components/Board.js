@@ -3,6 +3,7 @@ import Square from "./Square";
 
 const Board = () => {
     const [squaresValues, setSquaresValues] = useState(Array(9).fill(null));
+    const [xIsNext, setxIsNext] = useState(true);
 
     const renderSquare = i => (
         <Square value={squaresValues[i]} handleClick={() => handleClick(i)} />
@@ -10,11 +11,14 @@ const Board = () => {
 
     const handleClick = i => {
         const squaresValuesCopy = [...squaresValues];
-        squaresValuesCopy[i] = "X";
+        const symbol = xIsNext ? "X" : "O";
+        squaresValuesCopy[i] = symbol;
         setSquaresValues(squaresValuesCopy);
+        setxIsNext(!xIsNext);
     };
 
-    const status = "Next player: X";
+    const symbol = xIsNext ? "X" : "O";
+    const status = `Next player: ${symbol}`;
 
     return (
         <div>
