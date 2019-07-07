@@ -4,7 +4,15 @@ import Square from "./Square";
 const Board = () => {
     const [squaresValues, setSquaresValues] = useState(Array(9).fill(null));
 
-    const renderSquare = i => <Square value={squaresValues[i]} />;
+    const renderSquare = i => (
+        <Square value={squaresValues[i]} handleClick={() => handleClick(i)} />
+    );
+
+    const handleClick = i => {
+        const squaresValuesCopy = [...squaresValues];
+        squaresValuesCopy[i] = "X";
+        setSquaresValues(squaresValuesCopy);
+    };
 
     const status = "Next player: X";
 
