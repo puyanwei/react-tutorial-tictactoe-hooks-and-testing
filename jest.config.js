@@ -1,6 +1,3 @@
 module.exports = {
-    setupFilesAfterEnv: [
-        "@testing-library/jest-dom/extend-expect",
-        "@testing-library/react/cleanup-after-each"
-    ]
+    setupFilesAfterEnv: ["<rootDir>/src/__tests__/testSetup.js"]
 };

@@ -1,4 +1,5 @@
 import { render, fireEvent } from "@testing-library/react";
+import "@testing-library/react/cleanup-after-each";
 import React from "react";
 
 import Board from "../components/Board";
@@ -21,21 +22,33 @@ describe("Board.js", () => {
     it("clicking the first square adds an 'X' to the button", () => {
         render(<Board />);
 
-        const firstSquare = document.getElementsByClassName("square")[0];
+        const squareOne = document.getElementsByClassName("square")[0];
 
-        fireEvent.click(firstSquare);
-        expect(firstSquare.innerHTML).toEqual("X");
+        fireEvent.click(squareOne);
+        expect(squareOne.innerHTML).toEqual("X");
     });
     it("clicking the first and second squares adds an 'X' and 'O' to the first two buttons", () => {
         render(<Board />);
 
-        const firstSquare = document.getElementsByClassName("square")[0];
-        const secondSquare = document.getElementsByClassName("square")[1];
+        const squareOne = document.getElementsByClassName("square")[0];
+        const squareTwo = document.getElementsByClassName("square")[1];
 
-        fireEvent.click(firstSquare);
-        fireEvent.click(secondSquare);
+        fireEvent.click(squareOne);
+        fireEvent.click(squareTwo);
 
-        expect(firstSquare.innerHTML).toEqual("X");
-        expect(secondSquare.innerHTML).toEqual("O");
+        expect(squareOne.innerHTML).toEqual("X");
+        expect(squareTwo.innerHTML).toEqual("O");
+    });
+    it("clicking the first and second squares will toggle the text for what the next players symbol is", () => {
+        render(<Board />);
+        const status = document.getElementsByClassName("status")[0];
+        const squareOne = document.getElementsByClassName("square")[0];
+        const squareTwo = document.getElementsByClassName("square")[1];
+
+        expect(status.innerHTML).toEqual("Next player: X");
+        fireEvent.click(squareOne);
+        expect(status.innerHTML).toEqual("Next player: O");
+        fireEvent.click(squareTwo);
+        expect(status.innerHTML).toEqual("Next player: X");
     });
 });
